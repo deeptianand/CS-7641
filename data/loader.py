@@ -349,6 +349,24 @@ class SpamData(DataLoader):
     def pre_training_adjustment(self, train_features, train_classes):
         return train_features, train_classes
 
+class PimaIndiansDiabetes(DataLoader):
+    def __init__(self, path='data/pima_indians_diabetes.csv', verbose=False, seed=1):
+        super().__init__(path, verbose, seed)
+
+    def _load_data(self):
+        self._data = pd.read_csv(self._path, header=None)
+
+    def data_name(self):
+        return 'PimaIndiansDiabetes'
+
+    def class_column_name(self):
+        return '8'
+
+    def _preprocess_data(self):
+        pass
+
+    def pre_training_adjustment(self, train_features, train_classes):
+        return train_features, train_classes        
 
 class StatlogVehicleData(DataLoader):
     def __init__(self, path='data/statlog.vehicle.csv', verbose=False, seed=1):

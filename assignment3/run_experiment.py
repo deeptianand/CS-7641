@@ -88,18 +88,18 @@ if __name__ == '__main__':
 
     datasets = []
     dataset1_details = {
-            'data': loader.StatlogVehicleData(verbose=verbose, seed=seed),
-            'name': 'statlog_vehicle',
-            'readable_name': 'Statlog Vehicle',
-            'best_nn_params': {'NN__activation': ['relu'], 'NN__alpha': [1.0],
-                               'NN__hidden_layer_sizes': [(36, 36)], 'NN__learning_rate_init': [0.016]}
-        }
+        'data': loader.SpamData(verbose=verbose, seed=seed),
+        'name': 'spam_data',
+        'readable_name': 'Spam Data',
+        'best_nn_params': {'NN__activation': ['relu'], 'NN__alpha': [0.001],
+                           'NN__hidden_layer_sizes': [(57, 57)], 'NN__learning_rate_init': [0.004]}
+    }
     dataset2_details = {
-            'data': loader.HTRU2Data(verbose=verbose, seed=seed),
-            'name': 'htru2',
-            'readable_name': 'HTRU2',
-            'best_nn_params': {'NN__activation': ['relu'], 'NN__alpha': [1.0],
-                               'NN__hidden_layer_sizes': [(36, 36)], 'NN__learning_rate_init': [0.016]}
+            'data': loader.PimaIndiansDiabetes(verbose=verbose, seed=seed),
+            'name': 'PimaIndiansDiabetes',
+            'readable_name': 'Pima Indians Diabetes',
+            'best_nn_params': {'NN__activation': ['relu'], 'NN__alpha': [0.1],
+                               'NN__hidden_layer_sizes': [(16, 16, 16)], 'NN__learning_rate_init': [0.128]}
     }
     if args.dataset1:
         datasets.append(dataset1_details)
