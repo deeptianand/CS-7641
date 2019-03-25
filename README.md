@@ -1,6 +1,6 @@
 # CS 7641 Assignments
 
-Forked from git@github.com:cmaron/CS-7641-assignments.git
+Forked from https://github.com/cmaron/CS-7641-assignments/tree/12655c7fc3d26b6bddb6b4494863e8a927e842dd
 
 This repo is full of code for [CS 7641 - Machine Learning](https://www.omscs.gatech.edu/cs-7641-machine-learning) at Georgia Tech. 
 
