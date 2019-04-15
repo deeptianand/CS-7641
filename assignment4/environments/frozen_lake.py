@@ -136,22 +136,30 @@ class RewardingFrozenLakeEnv(discrete.DiscreteEnv):
                                 done = bytes(newletter) in b'GH'
                                 rew = float(newletter == b'G')
                                 if self.rewarding:
-                                    if newletter == b'F':
+                                    if newletter in b'FS':
                                         rew = self.step_reward
                                     elif newletter == b'H':
                                         rew = self.hole_reward
-                                li.append((1.0 / 3.0, newstate, rew, done))
+                                    else:
+                                        if newletter != b'G': # We don't want to penalise goal
+                                            rew = self.step_reward # Negative reward for taking action that results in no movement
+                                if b == a:
+                                    li.append((0.8, newstate, rew, done))
+                                else:
+                                    li.append((0.1, newstate, rew, done))
                         else:
                             newrow, newcol = inc(row, col, a)
                             newstate = to_s(newrow, newcol)
                             newletter = desc[newrow, newcol]
                             done = bytes(newletter) in b'GH'
                             rew = float(newletter == b'G')
-                            if self.rewarding:
-                                if newletter == b'F':
-                                    rew = self.step_reward
-                                elif newletter == b'H':
-                                    rew = self.hole_reward
+                            if newletter in b'FS':
+                                rew = self.step_reward
+                            elif newletter == b'H':
+                                rew = self.hole_reward
+                            else:
+                                if newletter != b'G': # We don't want to penalise goal
+                                    rew = self.step_reward # Negative reward for taking action that results in no movement
                             li.append((1.0, newstate, rew, done))
 
         super(RewardingFrozenLakeEnv, self).__init__(nS, nA, P, isd)
